@@ -1,3 +1,4 @@
+import useRegisterModal from "@/hooks/use-registration-modal";
 
 interface FormProps {
     placeholder: string;
@@ -12,6 +13,7 @@ const Form: React.FC<FormProps> = ({
 
 }) => {
     const registerModal = useRegisterModal();
+    const loginModal = useLoginModal();
 
     return (<div>
         

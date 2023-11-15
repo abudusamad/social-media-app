@@ -2,7 +2,7 @@
 
 export default function Home() {
   return (
-    <div className="text-semibold text-slate-700 font-semibold text-2xl">
+    <div className="text-3xl text-white p-6">
       hello world
     </div>
   )

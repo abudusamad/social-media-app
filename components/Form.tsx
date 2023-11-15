@@ -11,6 +11,8 @@ const Form: React.FC<FormProps> = ({
     postId,
 
 }) => {
+    const registerModal = useRegisterModal();
+
     return (<div>
         
     </div> );

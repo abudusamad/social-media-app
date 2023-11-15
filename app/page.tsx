@@ -1,9 +1,10 @@
+import Header from "@/components/Header";
 
 
 export default function Home() {
   return (
-    <div className="text-white">
-      sdfasdfasddsfafd
-    </div>
+    <>
+      <Header label="Home" />
+    </>
 	);
 }

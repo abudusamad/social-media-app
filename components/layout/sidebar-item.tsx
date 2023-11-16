@@ -1,4 +1,4 @@
-"use client";
+
 
 import useLoginModal from "@/hooks/useLogingModal";
 import { IconType } from "react-icons";
@@ -13,14 +13,14 @@ interface SidebarItemProps {
 	auth?: boolean;
 }
 
-const SidebarItem: React.FC<SidebarItemProps> = ({
+const SidebarItem = ({
 	label,
 	icon: Icon,
 	href,
 	alert,
 	auth,
-}) => {
-	const loginModal = useLoginModal();
+}:SidebarItemProps) => {
+	
 
 	return (
 		<div className="flex flex-row items-center">

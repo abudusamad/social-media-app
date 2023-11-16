@@ -1,8 +1,23 @@
+"use client";
+
+import useRegisterModal from "@/hooks/use-registration-modal";
+import useLoginModal from "@/hooks/useLogingModal";
+import { useRouter } from "next/navigation";
+import { useCallback } from "react";
 import { FaFeather } from "react-icons/fa";
 
 const SidebarTweetButton = () => {
-    return (<div>
-        <div className="
+	const router = useRouter();
+
+	const registerModal = useRegisterModal();
+
+	const onClick = useCallback(() => {
+		registerModal.onOpen();
+	}, [registerModal]);
+	return (
+		<div onClick={onClick}>
+			<div
+				className="
         mt-6
         lg:hidden
         h-14
@@ -16,10 +31,12 @@ const SidebarTweetButton = () => {
         hover:bg-opacity-80
         transition
         cursor-pointer
-        ">
-            <FaFeather size={ 28} color="white" />
-        </div>
-        <div className="
+        "
+			>
+				<FaFeather size={28} color="white" />
+			</div>
+			<div
+				className="
         mt-6
         hidden
         lg:block
@@ -29,13 +46,14 @@ const SidebarTweetButton = () => {
         bg-sky-500
         hover:bg-opacity-80
         cursor-pointer
-        ">
-            <p className=" hidden lg:block text-center font-semibold text-white text-[20px]">
-                Tweet
-            </p>
+        "
+			>
+				<p className=" hidden lg:block text-center font-semibold text-white text-[20px]">
+					Tweet
+				</p>
+			</div>
+		</div>
+	);
+};
 
-        </div>
-    </div> );
-}
- 
-export default SidebarTweetButton;          
+export default SidebarTweetButton;

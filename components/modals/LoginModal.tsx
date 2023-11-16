@@ -4,9 +4,11 @@ import useLoginModal from "@/hooks/useLogingModal";
 import { useCallback, useState } from "react";
 import Input from "../Input";
 import Modal from "../Modal";
+import useRegisterModal from "@/hooks/use-registration-modal";
 
 const LoginModal = () => {
-	const loginModal = useLoginModal();
+    const loginModal = useLoginModal();
+    const registerModal = useRegisterModal();
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -26,8 +28,9 @@ const LoginModal = () => {
     },[loginModal])
 
 	const onTogle = useCallback(() => {
-		loginModal.onClose();
-	}, [loginModal]);
+        loginModal.onClose();
+        registerModal.onOpen();
+	}, [loginModal, registerModal]);
 
 	const bodyContent = (
 		<div className="flex flex-col gap-4">

@@ -1,5 +1,4 @@
 import Layout from "@/components/Layout";
-import EditModal from "@/components/modals/EditModal";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -18,7 +17,6 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={inter.className}>
-				<EditModal />
 				<Layout />
 				{children}
 			</body>

@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Modal from "@/components/Modal";
+import LoginModal from "@/components/modals/LoginModal";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -20,6 +21,7 @@ export default function RootLayout({
 	return (
 			<html lang="en">
 			<body className={inter.className}>
+				<LoginModal/>
 				<Layout/>
 				{children}</body>
 			</html>

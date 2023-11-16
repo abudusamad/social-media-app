@@ -1,4 +1,5 @@
 import useRegisterModal from "@/hooks/use-registration-modal";
+import useLoginModal from "@/hooks/useLogingModal";
 
 interface FormProps {
     placeholder: string;

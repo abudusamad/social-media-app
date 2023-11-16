@@ -1,6 +1,6 @@
 import Home from "@/app/page";
-import Sidebar from "./layout.tsx/Sidebar";
-import FollowBar from "./layout.tsx/follow-bar";
+import Sidebar from "./layout/Sidebar";
+import FollowBar from "./layout/follow-bar";
 
 const Layout = () => {
 	return (

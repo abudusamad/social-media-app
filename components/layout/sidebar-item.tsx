@@ -1,17 +1,27 @@
+"use client";
+
+import useLoginModal from "@/hooks/useLogingModal";
 import { IconType } from "react-icons";
+import { BsDot } from "react-icons/bs";
 
 interface SidebarItemProps {
 	label: string;
 	icon: IconType;
 	href: string;
 	onClick?: () => void;
+	alert?: boolean;
+	auth?: boolean;
 }
 
 const SidebarItem: React.FC<SidebarItemProps> = ({
 	label,
 	icon: Icon,
 	href,
+	alert,
+	auth,
 }) => {
+	const loginModal = useLoginModal();
+
 	return (
 		<div className="flex flex-row items-center">
 			<div
@@ -32,8 +42,12 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
             "
 			>
 				<Icon size={28} color="white" />
-            </div>
-            <div className="
+				{alert ? (
+					<BsDot className="text-sky-500 absolute top-4 left-0" size={70} />
+				) : null}
+			</div>
+			<div
+				className="
             relative
             hidden
             lg:flex
@@ -45,13 +59,14 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
             hovr:bg-opacity-10
             cursor-pointer
             items-center
-            ">
-                <Icon size={28} color="white" />
-                <p className="hidden lg:block text-white text-xl">
-                    {label}
-                </p>
-
-            </div>
+            "
+			>
+				<Icon size={28} color="white" />
+				<p className="hidden lg:block text-white text-xl">{label}</p>
+				{alert ? (
+					<BsDot className="text-sky-500 absolute top-4 left-0" size={70} />
+				) : null}
+			</div>
 		</div>
 	);
 };

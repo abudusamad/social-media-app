@@ -2,6 +2,8 @@ import Layout from "@/components/Layout";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import LoginModal from "@/components/modals/LoginModal";
+import RegisterModal from "@/components/modals/registerModal";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -17,6 +19,8 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={inter.className}>
+				<RegisterModal/>t
+				<LoginModal/>
 				<Layout />
 				{children}
 			</body>

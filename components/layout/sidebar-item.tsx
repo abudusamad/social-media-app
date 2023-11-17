@@ -10,7 +10,7 @@ import { BsDot } from "react-icons/bs";
 interface SidebarItemProps {
 	label: string;
 	icon: IconType;
-	href: string;
+	href?: string;
 	onClick?: () => void;
 	alert?: boolean;
 	auth?: boolean;

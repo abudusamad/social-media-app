@@ -1,9 +1,11 @@
+"use client";
 
 
+import useCurrentUser from "@/hooks/useCurrentUser";
 import useLoginModal from "@/hooks/useLogingModal";
+import { useRouter } from "next/navigation";
 import { IconType } from "react-icons";
 import { BsDot } from "react-icons/bs";
-
 interface SidebarItemProps {
 	label: string;
 	icon: IconType;
@@ -19,7 +21,12 @@ const SidebarItem = ({
 	href,
 	alert,
 	auth,
-}:SidebarItemProps) => {
+}: SidebarItemProps) => {
+	const router = useRouter();
+	const LoginModal = useLoginModal();
+
+	const {data: curentUser} = useCurrentUser();
+	
 	
 
 	return (

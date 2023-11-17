@@ -1,10 +1,9 @@
 import Layout from "@/components/Layout";
+import LoginModal from "@/components/modals/LoginModal";
+import RegisterModal from "@/components/modals/registerModal";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import LoginModal from "@/components/modals/LoginModal";
-import RegisterModal from "@/components/modals/registerModal";
-import { SessionProvider, getSession } from "next-auth/react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -16,17 +15,13 @@ export default function RootLayout({
 	children,
 }: {
 	children: React.ReactNode;
-	}) {
+}) {
 	return (
 		<html lang="en">
-
 			<body className={inter.className}>
-			<SessionProvider >
-				<RegisterModal/>
-				<LoginModal/>
-				<Layout />
-				{children}
-			</SessionProvider>
+				<RegisterModal />
+				<LoginModal />
+				<Layout>{children}</Layout>
 			</body>
 		</html>
 	);

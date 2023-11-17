@@ -1,8 +1,9 @@
-import Home from "@/app/page";
+"use client";
+
 import Sidebar from "./layout/Sidebar";
 import FollowBar from "./layout/follow-bar";
 
-const Layout = () => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
 	return (
 		<div className=" h-screen bg-black">
 			<div className="container h-full mx-auto xl:px-32 max-w-6xl">
@@ -16,7 +17,7 @@ const Layout = () => {
 					border-neutral-800
 					"
 					>
-						<Home />
+						{children}
 					</div>
 					<FollowBar />
 				</div>

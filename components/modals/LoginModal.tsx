@@ -1,35 +1,42 @@
 "use client";
 
+import useRegisterModal from "@/hooks/use-registration-modal";
 import useLoginModal from "@/hooks/useLogingModal";
+import { signIn } from "next-auth/react";
 import { useCallback, useState } from "react";
+import toast from "react-hot-toast";
 import Input from "../Input";
 import Modal from "../Modal";
-import useRegisterModal from "@/hooks/use-registration-modal";
 
 const LoginModal = () => {
-    const loginModal = useLoginModal();
-    const registerModal = useRegisterModal();
+	const loginModal = useLoginModal();
+	const registerModal = useRegisterModal();
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
 
-    const onSubmit = useCallback(() => {
-        try {
-            setIsLoading(true)
+	const onSubmit = useCallback(async () => {
+		try {
+			setIsLoading(true);
+			await signIn("credentials", {
+				email,
+				password,
+			});
 
-            loginModal.onClose();
-            
-        } catch (error) {
-            console.log(error)
-        } finally {
-            setIsLoading(false)
-        }
-    },[loginModal])
+			toast.success("Login successfully");
+
+			loginModal.onClose();
+		} catch (error) {
+			toast.error("Something went wrong");
+		} finally {
+			setIsLoading(false);
+		}
+	}, [loginModal, email, password]);
 
 	const onTogle = useCallback(() => {
-        loginModal.onClose();
-        registerModal.onOpen();
+		loginModal.onClose();
+		registerModal.onOpen();
 	}, [loginModal, registerModal]);
 
 	const bodyContent = (

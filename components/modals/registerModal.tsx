@@ -10,50 +10,52 @@ import Input from "../Input";
 import Modal from "../Modal";
 
 const RegisterModal = () => {
-	const loginModal = useLoginModal();
-	const registerModal = useRegisterModal();
+	 const loginModal = useLoginModal();
+		const registerModal = useRegisterModal();
 
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
-	const [username, setUsername] = useState("");
-	const [name, setName] = useState("");
+		const [email, setEmail] = useState("");
+		const [password, setPassword] = useState("");
+		const [username, setUsername] = useState("");
+		const [name, setName] = useState("");
 
-	const [isLoading, setIsLoading] = useState(false);
+		const [isLoading, setIsLoading] = useState(false);
 
-	const onTogle = useCallback(() => {
-		if (isLoading) {
-			return;
-		}
-		registerModal.onClose();
-		loginModal.onOpen();
-	}, [loginModal, registerModal, isLoading]);
-
-	const onSubmit = useCallback(async () => {
-		try {
-			setIsLoading(true);
-
-			await axios.post("/api/register", {
-				email,
-				password,
-				username,
-				name,
-			});
-			setIsLoading(false);
-			toast.success("Account created successfully");
-
-			signIn("credentials", {
-				email,
-				password,
-			});
+		const onToggle = useCallback(() => {
+			if (isLoading) {
+				return;
+			}
 
 			registerModal.onClose();
-		} catch (error) {
-			console.log(error);
-			toast.error("Something Went Wrong")
-		} finally {
-			setIsLoading(false);
-		}
-	}, [registerModal, email, password, username, name]);
+			loginModal.onOpen();
+		}, [loginModal, registerModal, isLoading]);
+
+		const onSubmit = useCallback(async () => {
+			try {
+				setIsLoading(true);
+
+				await axios.post("/api/register", {
+					email,
+					password,
+					username,
+					name,
+				});
+
+				setIsLoading(false);
+
+				toast.success("Account created.");
+
+				signIn("credentials", {
+					email,
+					password,
+				});
+
+				registerModal.onClose();
+			} catch (error) {
+				toast.error("Something went wrong");
+			} finally {
+				setIsLoading(false);
+			}
+		}, [email, password, registerModal, username, name]);
 
 	const bodyContent = (
 		<div className="flex flex-col gap-4">
@@ -89,7 +91,7 @@ const RegisterModal = () => {
 			<p>
 				Already have an account?
 				<span
-					onClick={onTogle}
+					onClick={onToggle}
 					className="text-white cursor-pointer hover:underline"
 				>
 					Sign in

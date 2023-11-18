@@ -5,10 +5,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
+import AuthProvider from "./context/authProvider";
 const inter = Inter({ subsets: ["latin"] });
-
-import SessionProvider from "@/utils/SessionProvider";
-import { Session } from "inspector";
 
 export const metadata: Metadata = {
 	title: "Social media App",
@@ -23,12 +21,12 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={inter.className}>
-				<SessionProvider >
+				<AuthProvider>
 					<Toaster />
 					<RegisterModal />
 					<LoginModal />
 					<Layout>{children}</Layout>
-				</SessionProvider>
+				</AuthProvider>
 			</body>
 		</html>
 	);

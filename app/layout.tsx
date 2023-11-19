@@ -1,11 +1,11 @@
 import Layout from "@/components/Layout";
 import LoginModal from "@/components/modals/LoginModal";
 import RegisterModal from "@/components/modals/registerModal";
+import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
-import AuthProvider from "./context/authProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -19,15 +19,15 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en">
-			<body className={inter.className}>
-				<AuthProvider >
+		<ClerkProvider>
+			<html lang="en">
+				<body className={inter.className}>
 					<Toaster />
 					<RegisterModal />
 					<LoginModal />
 					<Layout>{children}</Layout>
-				</AuthProvider>
-			</body>
-		</html>
+				</body>
+			</html>
+		</ClerkProvider>
 	);
 }

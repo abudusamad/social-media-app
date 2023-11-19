@@ -1,12 +1,12 @@
 import Layout from "@/components/Layout";
-import LoginModal from "@/components/modals/LoginModal";
-import RegisterModal from "@/components/modals/registerModal";
+
 import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
+import {dark} from "@clerk/themes"
 
 export const metadata: Metadata = {
 	title: "Social media App",
@@ -19,12 +19,14 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<ClerkProvider>
+		<ClerkProvider
+			appearance={{
+				baseTheme: dark
+			}}
+		>
 			<html lang="en">
 				<body className={inter.className}>
 					<Toaster />
-					<RegisterModal />
-					<LoginModal />
 					<Layout>{children}</Layout>
 				</body>
 			</html>

@@ -1,12 +1,10 @@
 import Layout from "@/components/Layout";
 
-import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
-import {dark} from "@clerk/themes"
 
 export const metadata: Metadata = {
 	title: "Social media App",
@@ -19,17 +17,11 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<ClerkProvider
-			appearance={{
-				baseTheme: dark
-			}}
-		>
-			<html lang="en">
-				<body className={inter.className}>
-					<Toaster />
-					<Layout>{children}</Layout>
-				</body>
-			</html>
-		</ClerkProvider>
+		<html lang="en">
+			<body className={inter.className}>
+				<Toaster />
+				<Layout>{children}</Layout>
+			</body>
+		</html>
 	);
 }

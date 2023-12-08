@@ -1,6 +1,7 @@
 "use client";
 
 import useCurrentUser from "@/hooks/useCurrentUser";
+import useEditModal from "@/hooks/useEditModal";
 import useLoginModal from "@/hooks/useLogingModal";
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
@@ -8,6 +9,7 @@ import { FaFeather } from "react-icons/fa";
 
 const SidebarTweetButton = () => {
 	const router = useRouter();
+	const editModal = useEditModal();
 
 	const loginModal = useLoginModal();
 	const { data: currentUser } = useCurrentUser();
@@ -52,7 +54,7 @@ const SidebarTweetButton = () => {
         cursor-pointer
         "
 			>
-				<p className=" hidden lg:block text-center font-semibold text-white text-[20px]">
+				<p onClick={editModal.onOpen} className=" hidden lg:block text-center font-semibold text-white text-[20px]">
 					Tweet
 				</p>
 			</div>

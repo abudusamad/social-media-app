@@ -4,7 +4,7 @@ interface InputProps {
 	value?: string;
 	disabled?: boolean;
 	label?: string;
-	onchange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+	onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Input = ({
@@ -13,7 +13,7 @@ const Input = ({
 	value,
 	disabled,
 	label,
-	onchange,
+	onChange,
 }: InputProps) => {
 	return (
 		<div className="w-full">
@@ -22,7 +22,7 @@ const Input = ({
 			)}
 			<input
 				disabled={disabled}
-				onChange={onchange}
+				onChange={onChange}
 				value={value}
 				placeholder={placeholder}
 				type={type}
@@ -35,13 +35,14 @@ const Input = ({
                 border-neutral-800
                 rounded-md
                 outline-none
+				cursor-pointer
                 text-white
                 focus:border-sky-500
                 focus:border-2
                 transition
                 disabled:bg-neutral-900
                 disabled:opacity-70
-                disabled: cursor-not-allowed
+                disabled:cursor-not-allowed
                 
                 "
 			/>

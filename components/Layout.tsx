@@ -1,9 +1,11 @@
-"use client";
 
+
+import getCurrentUser from "@/actions/getCurrentUser";
 import Sidebar from "./layout/Sidebar";
 import FollowBar from "./layout/follow-bar";
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
+const Layout = async ({ children }: { children: React.ReactNode }) => {
+	const  curentUser = await getCurrentUser();
 	return (
 		<div className=" h-screen bg-black">
 			<div className="container h-full mx-auto xl:px-32 max-w-6xl">

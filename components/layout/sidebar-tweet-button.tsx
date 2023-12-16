@@ -1,17 +1,16 @@
-"use client";
 
-import useCurrentUser from "@/hooks/useCurrentUser";
+
+import getCurrentUser from "@/actions/getCurrentUser";
 import useLoginModal from "@/hooks/useLogingModal";
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
 import { FaFeather } from "react-icons/fa";
 
-const SidebarTweetButton = () => {
+const SidebarTweetButton = async() => {
 	const router = useRouter();
 
 	const loginModal = useLoginModal();
-	const { data: currentUser } = useCurrentUser();
-
+	const currentUser =await getCurrentUser();
 	const onClick = useCallback(() => {
 		if (!currentUser) {
 			loginModal.onOpen();

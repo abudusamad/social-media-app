@@ -1,13 +1,14 @@
-import useCurrentUser from "@/hooks/useCurrentUser";
+
 import { BiLogOut } from "react-icons/bi";
 import { BsBellFill, BsHouseFill } from "react-icons/bs";
 import { FaUser } from "react-icons/fa";
 import SidebarLogo from "./Sidebar-logo";
 import SidebarItem from "./sidebar-item";
 import SidebarTweetButton from "./sidebar-tweet-button";
+import getCurrentUser from "@/actions/getCurrentUser";
 
-const Sidebar = () => {
-	const { data: currentUser } = useCurrentUser();
+const Sidebar = async () => {
+	const currentUser =await getCurrentUser();
 
 	const items = [
 		{

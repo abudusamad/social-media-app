@@ -11,7 +11,7 @@ export default async function getCurrentUser() {
 	try {
 		const session = await getSession();
 		if (!session?.user?.email) {
-			throw new Error("User email not found");
+			return null;
 		}
 
 		const currentUser = await prisma.user.findUnique({
@@ -20,7 +20,7 @@ export default async function getCurrentUser() {
 			},
 		});
 		if (!currentUser) {
-			throw new Error("User not found");
+			return null;
 		}
 		return currentUser;
 	} catch (error: any) {
